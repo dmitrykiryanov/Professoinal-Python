@@ -1,3 +1,5 @@
+from HW_5_Decorators.decorator_logger import logger_constructor_decor
+
 nested_list = [
 	['a', 'b', 'c'],
 	['d', 'e', 'f', 'h', False],
@@ -10,6 +12,8 @@ class FlatIterator:
         self.count_1 = 0
         self.count_2 = -1
         return self
+
+    @logger_constructor_decor()
     def __next__(self):
         if self.count_2 == len(self.my_list[self.count_1])-1:
             self.count_2 = -1
@@ -19,23 +23,27 @@ class FlatIterator:
         self.count_2 += 1
         return self.my_list[self.count_1][self.count_2]
 print('Итератор')
+
 for item in FlatIterator(nested_list):
     print(item)
-print('Генератор списка')
-flat_list = [item for item in FlatIterator(nested_list)]
-print(flat_list)
 
-print('Генератор')
 
-def flat_generator(my_list):
-    for row in my_list:
-        if type(row) is list:
-            for element in row:
-                yield element
-        else:
-            yield row
-for item in flat_generator(nested_list):
-    print(item)
+
+# print('Генератор списка')
+# flat_list = [item for item in FlatIterator(nested_list)]
+# print(flat_list)
+
+# print('Генератор')
+# @loger_constructor_decor('log_file.txt', None)
+# def flat_generator(my_list):
+#     for row in my_list:
+#         if type(row) is list:
+#             for element in row:
+#                 yield element
+#         else:
+#             yield row
+# for item in flat_generator(nested_list):
+#     print(item)
 
 # class FlatIterator:
 #
