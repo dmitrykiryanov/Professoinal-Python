@@ -1,6 +1,6 @@
 import requests
 
-TOKEN = 'AQAAAAAohLOyAADLW_Qv7L0_skuQqnTFDYfv4-I'
+TOKEN = ''
 
 class YandexDisk:
 
